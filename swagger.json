@@ -1,0 +1,384 @@
+{
+    "info": {
+        "title": "Node Swagger API",
+        "version": "1.0.0"
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "swagger": "2.0",
+    "paths": {
+        "/api/v1/books": {
+            "get": {
+                "tags": [
+                    "books"
+                ],
+                "description": "Returns book collection",
+                "produces": [
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "books array"
+                    },
+                    "500": {
+                        "description": "error details"
+                    }
+                }
+            }
+        },
+        "/api/v1/book/{id}": {
+            "get": {
+                "tags": [
+                    "books"
+                ],
+                "description": "Returns book collection",
+                "produces": [
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "description": "book id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "books array"
+                    },
+                    "500": {
+                        "description": "error details"
+                    }
+                }
+            }
+        },
+        "/api/v1/books/byRate/{rate}": {
+            "get": {
+                "tags": [
+                    "books"
+                ],
+                "description": "Returns books with over specific rate",
+                "produces": [
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "rate",
+                        "description": "book rate",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "books array"
+                    },
+                    "500": {
+                        "description": "error details"
+                    }
+                }
+            }
+        },
+        "/api/v1/books/byAuthor/{name}": {
+            "get": {
+                "tags": [
+                    "books"
+                ],
+                "description": "Returns books with over specific author",
+                "produces": [
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "description": "author name",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "books array"
+                    },
+                    "500": {
+                        "description": "error details"
+                    }
+                }
+            }
+        },
+        "/api/v1/authors/byRate/{rate}": {
+            "get": {
+                "tags": [
+                    "authors"
+                ],
+                "description": "Returns books with over specific author",
+                "produces": [
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "rate",
+                        "description": "book rate",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "books array"
+                    },
+                    "500": {
+                        "description": "error details"
+                    }
+                }
+            }
+        },
+        "/api/v1/book/rate": {
+            "post": {
+                "tags": [
+                    "rates"
+                ],
+                "description": "Create/update a rate for book",
+                "produces": [
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "bookId",
+                        "description": "book id",
+                        "in": "body",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "userId",
+                        "description": "user id",
+                        "in": "body",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "value",
+                        "description": "rate",
+                        "in": "body",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "comment",
+                        "description": "user's comment",
+                        "in": "body",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "book rate"
+                    },
+                    "500": {
+                        "description": "error details"
+                    }
+                }
+            }
+        },
+        "/api/v1/book/add": {
+            "post": {
+                "tags": [
+                    "books"
+                ],
+                "description": "Create a book",
+                "produces": [
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "description",
+                        "description": "book description",
+                        "in": "body",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "genre",
+                        "description": "book genre",
+                        "in": "body",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "ISBN",
+                        "description": "book's ISBN",
+                        "in": "body",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "numPages",
+                        "description": "number of pages",
+                        "in": "body",
+                        "required": false,
+                        "type": "number"
+                    },
+                    {
+                        "name": "numPages",
+                        "description": "number of pages",
+                        "in": "body",
+                        "required": false,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "book"
+                    },
+                    "500": {
+                        "description": "error details"
+                    }
+                }
+            }
+        },
+        "/api/v1/book/add/coverImage": {
+            "post": {
+                "tags": [
+                    "books"
+                ],
+                "description": "Create a book",
+                "produces": [
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "bookId",
+                        "description": "book id",
+                        "in": "body",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "coverImage",
+                        "description": "cover image url",
+                        "in": "body",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "book"
+                    },
+                    "500": {
+                        "description": "error details"
+                    }
+                }
+            }
+        },
+        "/api/v1/book/delete/{bookId}": {
+            "delete": {
+                "tags": [
+                    "books"
+                ],
+                "description": "Create a book",
+                "produces": [
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "bookId",
+                        "description": "book id",
+                        "in": "path",
+                        "required": true,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "book"
+                    },
+                    "500": {
+                        "description": "error details"
+                    }
+                }
+            }
+        },
+        "/api/v1/user/delete/{userName}": {
+            "delete": {
+                "tags": [
+                    "users"
+                ],
+                "description": "Delete user",
+                "produces": [
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "userName",
+                        "description": "uaer name",
+                        "in": "path",
+                        "required": true,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "user"
+                    },
+                    "500": {
+                        "description": "error details"
+                    }
+                }
+            }
+        },
+        "/api/v1/user/registerOrUpdate": {
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "description": "Edit user details",
+                "produces": [
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "userName",
+                        "description": "user name",
+                        "in": "body",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "password",
+                        "description": "user password",
+                        "in": "body",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "avatar",
+                        "description": "user avatar",
+                        "in": "body",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "book"
+                    },
+                    "500": {
+                        "description": "error details"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {},
+    "responses": {},
+    "parameters": {},
+    "securityDefinitions": {}
+}
